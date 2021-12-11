@@ -7,15 +7,22 @@
 $ docker-compose up -d
 
 # Step2:
-$ run LocalKafkaProducer.java -> topic: source001
+$ mvn clean install compile
 
 # Step3:
-$ run LocalFlinkSQL.java -> group by -> topic: sink001
+# run LocalKafkaProducer.java -> topic: source001
+$ mvn exec:java -Dexec.mainClass="org.flinksql.LocalKafkaProducer"
+
+# Step4:
+# run LocalFlinkSQL.java -> group by -> topic: sink001
 # edit resources/running.sql
+$ mvn exec:java -Dexec.mainClass="org.flinksql.LocalFlinkSQL" -Dexec.classpathScope=compile
 
-# Step
-$ run LocalKafkaConsume.java -> topic: source001, sink001
-
-    Topic: source001, offset: 4, value: {"userid": 333, "value": 7, "timestamp": "2021-12-11 00:17:26.000"}
-    Topic: sink001, offset: 4, value: {"per_minute":17,"amt":196,"cnt":35}
+# Step5：
+# run LocalKafkaConsume.java -> topic: source001, sink001
+$ mvn exec:java -Dexec.mainClass="org.flinksql.LocalKafkaConsume"
 ```
+
+## Runtime
+
+<img src="doc/runtime.png" width="600px"/>

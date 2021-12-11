@@ -14,7 +14,7 @@ CREATE TABLE source001 (
 
 CREATE TABLE sink001 (
     per_minute BIGINT,
-    amt BIGINT,
+        amt BIGINT,
     cnt BIGINT,
     primary key (per_minute) not enforced
 ) WITH (

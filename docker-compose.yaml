@@ -1,12 +1,12 @@
 version: '2.1'
 services:
   zookeeper:
-    container_name: fld-zookeeper
+    container_name: mfd-zookeeper
     image: imjaden/zookeeper:3.7.0
     ports:
       - "2181:2181"
   kafka:
-    container_name: fld-kafka
+    container_name: mfd-kafka
     image: imjaden/kafka:2.13-2.7.2
     ports:
       - "9092:9092"
@@ -25,5 +25,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 networks:
   default:
-    name: fld-networkd
+    name: mfd-networkd
     driver: bridge

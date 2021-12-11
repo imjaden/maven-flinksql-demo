@@ -23,7 +23,7 @@ public class LocalKafkaConsume {
         while (true) {
             ConsumerRecords<String, String> records = kafkaConsumer.poll(100);//100是超时时间
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("Topic: %s, offset: %d, value: %s\n", record.topic(), record.offset(), record.value());
+                System.out.printf("%s: %d, %s\n", record.topic(), record.offset(), record.value());
             }
         }
     }
