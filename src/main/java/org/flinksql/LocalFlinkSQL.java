@@ -11,7 +11,7 @@ public class LocalFlinkSQL {
         EnvironmentSettings settings = EnvironmentSettings.newInstance().useBlinkPlanner().inStreamingMode().build();
         StreamTableEnvironment env = StreamTableEnvironment.create(execEnv, settings);
 
-        String filePath = LocalFlinkSQL.class.getClassLoader().getResource("FlinkRunning.sql").getPath();
+        String filePath = LocalFlinkSQL.class.getClassLoader().getResource("MavenRunning.sql").getPath();
         String flinkSQLs = readFlinkSQL(filePath);
         String[] sqls = flinkSQLs.split(";");
         for (String sql : sqls) {

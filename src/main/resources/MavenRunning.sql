@@ -8,7 +8,7 @@ CREATE TABLE source001 (
     'connector' = 'kafka',
     'topic' = 'source001',
     'scan.startup.mode' = 'earliest-offset',
-    'properties.bootstrap.servers' = 'kafka:9094',
+    'properties.bootstrap.servers' = '127.0.0.1:9092',
     'format' = 'json'
 );
 
@@ -20,11 +20,10 @@ CREATE TABLE sink001 (
 ) WITH (
     'connector' = 'upsert-kafka',
     'topic' = 'sink001',
-    'properties.bootstrap.servers' = 'kafka:9094',
+    'properties.bootstrap.servers' = '127.0.0.1:9092',
     'key.format' = 'json',
     'value.format' = 'json'
 );
-
 
 INSERT INTO sink001
 SELECT
