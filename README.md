@@ -2,6 +2,14 @@
 
 ## FlinkSQL Maven Demo
 
+### Independencies
+
+| Service | Runtime | Remark |
+|---|---|---|
+| Zookeeper | Docker | docker-compose |
+| Kafka | Docker | docker-compose |
+| Flink | Maven | `mvm` or IntelliJ IDEA |
+
 ### Deployment
 
 ```
@@ -36,6 +44,14 @@ $ docker exec -it dfd-kafka /bin/bash -c "kafka-console-consumer.sh --bootstrap-
 
 ## FlinkSQL Docker Demo
 
+### Independencies
+
+| Service | Runtime | Remark |
+|---|---|---|
+| Zookeeper | Docker | docker-compose |
+| Kafka | Docker | docker-compose |
+| Flink | Docker | docker-compose |
+
 ### Deployment
 
 ```
@@ -60,12 +76,12 @@ $ docker exec -it dfd-flink /bin/bash -c './sql-client.sh'
 # resources/FlinkRunning.sql
 
 # Step5:
-# startup kafka consumer LocalKafkaConsumer.java -> topic: source001, sink001
-$ mvn exec:java -Dexec.mainClass="org.flinksql.LocalKafkaConsumer"
-
-# or execute kafka commands
+# startup kafka consumer-> topic: source001, sink001
 $ docker exec -it dfd-kafka /bin/bash -c "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic source001"
 $ docker exec -it dfd-kafka /bin/bash -c "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic sink001"
+
+# or execute `mvn` commands startup kafka consumer LocalKafkaConsumer.java 
+$ mvn exec:java -Dexec.mainClass="org.flinksql.LocalKafkaConsumer"
 
 # Step6:
 # visit flink jobs web 
@@ -83,11 +99,3 @@ $ docker exec -it dfd-kafka /bin/bash -c "kafka-console-consumer.sh --bootstrap-
 - Flink, [DockerHub](https://hub.docker.com/repository/docker/imjaden/flink), [Github](https://github.com/imjaden/docker-flink)
 - Kafka, [DockerHub](https://hub.docker.com/repository/docker/imjaden/kafka), [Github](https://github.com/imjaden/docker-kafka)
 - Zookeeper, [DockerHub](https://hub.docker.com/repository/docker/imjaden/zookeeper), [Github](https://github.com/imjaden/docker-zookeeper)
-
-
-
-
-
-
-
-
